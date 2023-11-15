@@ -11,6 +11,6 @@ data, personal details, etc? What other faults exist within the system that we'r
 that's just me.
 
 Avail.exe hashes:
-SHA-256 hash: 1bcb43d7200fa4bb45a78b4ff27f075589d58fcd47f2147cfca8ae71078ad13f
-SHA-1 hash: 48693f045c9c42a695d23c8cbc3d4f590773a50d
-MD5 hash: 2392398f2b2550a7a3e17039820534e1
+- SHA-256 hash: 1bcb43d7200fa4bb45a78b4ff27f075589d58fcd47f2147cfca8ae71078ad13f
+- SHA-1 hash: 48693f045c9c42a695d23c8cbc3d4f590773a50d
+- MD5 hash: 2392398f2b2550a7a3e17039820534e1
