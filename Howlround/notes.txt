@@ -1,0 +1,17 @@
+﻿avail.exe is a binary that was found on Middlesex University London machines, located in the Startup folder. This binary is part of the master image that is downloaded to each machine.
+Since the master image is meant to be generated on a sanitary machine, one can only wonder how said binary became part of the image to begin with. It is possible that other campuses could have the same
+binary if the master image is shared over a VPN backhaul link. It could very well be that the IT department has been comprimised.
+
+It's primary function is to respond to any UDP packet sent over port 54321. Upon receipt of the data, it will log it to a non-existent console output (unless running in a debugger or emulator like WINE),
+and then respond with the first four characters of the currently logged-in user's username to the source of the UDP packet on port 54321. Of note, it is also possible to ask every instance of Avail running
+to report their username by sending a UDP packet to port 54321 on the network's broadcast address.
+
+It is theoretically possible to cause a CPU Hog incident (if there is only one instance of Avail on the network) or a possible DoS attack (if there are multiple instances of Avail) if the following packet is sent:
+OutPack = (Ether(dst=b"\xFF\xFF\xFF\xFF\xFF\xFF",src=SockHan.getsockname()[-1])/IP(src=<Broadcast>,dst=<Broadcast>)/UDP(sport=54321,dport=54321)/os.urandom(100))
+Formula for determing network strain caused by packet:
+46**<Number of avail hosts active>
+
+Additionally, repeatedly sending the same packet over and over again will cause the effect to stack.
+The Howlround tool will exploit the sloppy programming of avail.exe. Great care must be taken when executing this, since activation of the "spoofpacket" tool in a live network
+will cause possible slowdowns and/or downtime of the network.
+The script has been written in Python 3.9.2, the required dependices are in requirements.txt
